@@ -1,0 +1,127 @@
+{
+    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+    "version": 3,
+    "console_title_template": "{{ if or .Root .Segments.Git.RepoName }}[ {{ if .Root }}Admin{{ end }}{{ if and .Root .Segments.Git.RepoName }}@{{ end }}{{ if .Segments.Git.RepoName }}{{ .Segments.Git.RepoName }}{{ end }} ]{{ end }} {{ .Folder }}",
+    "palette": {
+        "background-color": "transparent",
+        "error-background": "transparent",
+        "error-text": "#dd0033",
+        "timer-text": "#EDFFA5",
+        "symbol-color": "#E7E7E7",
+        "git-text": "#5a4b81"
+    },
+    "blocks": [
+        {
+            "alignment": "left",
+            "newline": true,
+            "segments": [
+                {
+                    "background": "p:background-color",
+                    "foreground": "p:symbol-color",
+                    "style": "powerline",
+                    "type": "python",
+                    "properties": {
+                        "display_mode": "environment",
+                        "fetch_virtual_env": true,
+                        "home_enabled": true,
+                        "folder_name_fallback": false
+                    },
+                    "template": " <p:symbol-color></> {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}"
+                },
+                {
+                    "background": "p:background-color",
+                    "foreground": "p:git-text",
+                    "style": "powerline",
+                    "template": " <p:symbol-color>\uF408</> {{ .RepoName }}",
+                    "type": "git"
+                },
+                {
+                    "background": "p:background-color",
+                    "foreground": "p:timer-text",
+                    "properties": {
+                        "style": "austin",
+                        "threshold": 1
+                    },
+                    "style": "powerline",
+                    "template": " <p:symbol-color>\ueba2</> {{ .FormattedMs }}",
+                    "type": "executiontime"
+                },
+                {
+                    "background": "p:background-color",
+                    "foreground": "p:symbol-color",
+                    "properties": {
+                        "always_enabled": true
+                    },
+                    "style": "powerline",
+                    "template": "{{ if eq .Code 0 }} \uf004 {{ end }}",
+                    "type": "status"
+                },
+                {
+                    "background": "p:error-background",
+                    "foreground": "p:error-text",
+                    "style": "diamond",
+                    "template": "{{ if ne .Code 0 }} 󰋔 - {{ reason .Code }}{{else}}{{ end }}",
+                    "type": "status"
+                }
+            ],
+            "type": "prompt"
+        },
+        {
+            "alignment": "left",
+            "newline": true,
+            "segments": [
+                {
+                    "background": "p:background-color",
+                    "foreground": "p:symbol-color",
+                    "properties": {
+                        "folder_separator_icon": "/",
+                        "style": "folder"
+                    },
+                    "style": "powerline",
+                    "template": " \ue5ff {{ path .Path .Location }} ",
+                    "type": "path"
+                },
+                {
+                    "background": "p:background-color",
+                    "foreground": "p:git-text",
+                    "properties": {
+                        "fetch_stash_count": true,
+                        "fetch_status": true
+                    },
+                    "style": "powerline",
+                    "template": "{{ .HEAD }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
+                    "type": "git"
+                }
+            ],
+            "type": "prompt"
+        },
+        {
+            "alignment": "left",
+            "newline": true,
+            "segments": [
+                {
+                    "background": "p:error-background",
+                    "foreground": "p:backgrond-color",
+                    "style": "diamond",
+                    "leading_diamond": "\ue0c7",
+                    "trailing_diamond": "\ue0c6",
+                    "template": " \uf0e7 ",
+                    "type": "root"
+                },
+                {
+                    "background": "p:background-color",
+                    "foreground": "p:git-text",
+                    "style": "plain",
+                    "template": "{{ if .Root }}{{ else }}<p:timer-text> > </>{{ end }}",
+                    "type": "text"
+                }
+            ],
+            "type": "prompt"
+        }
+    ],
+    "transient_prompt": {
+        "background": "p:background-color",
+        "foreground": "p:git-text",
+        "template": "{{ if .Root }}{{ else }}<p:timer-text> > </>{{ end }}"
+    }
+}
