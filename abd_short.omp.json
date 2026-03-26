@@ -26,13 +26,13 @@
                         "home_enabled": true,
                         "folder_name_fallback": false
                     },
-                    "template": " <p:symbol-color></> {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}"
+                    "template": "<p:symbol-color></> {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} "
                 },
                 {
                     "background": "p:background-color",
                     "foreground": "p:git-text",
                     "style": "powerline",
-                    "template": " <p:symbol-color>\uF408</> {{ .RepoName }}",
+                    "template": "<p:symbol-color>\uF408</> {{ .RepoName }} ",
                     "type": "git"
                 },
                 {
@@ -43,7 +43,7 @@
                         "threshold": 1
                     },
                     "style": "powerline",
-                    "template": " <p:symbol-color>\ueba2</> {{ .FormattedMs }}",
+                    "template": "<p:symbol-color>\ueba2</> {{ .FormattedMs }} ",
                     "type": "executiontime"
                 },
                 {
@@ -53,14 +53,14 @@
                         "always_enabled": true
                     },
                     "style": "powerline",
-                    "template": "{{ if eq .Code 0 }} \uf004 {{ end }}",
+                    "template": "{{ if eq .Code 0 }}\uf004 {{ end }} ",
                     "type": "status"
                 },
                 {
                     "background": "p:error-background",
                     "foreground": "p:error-text",
                     "style": "diamond",
-                    "template": "{{ if ne .Code 0 }} 󰋔 - {{ reason .Code }}{{else}}{{ end }}",
+                    "template": "{{ if ne .Code 0 }}󰋔 - {{ reason .Code }}{{else}}{{ end }}",
                     "type": "status"
                 }
             ],
@@ -78,7 +78,7 @@
                         "style": "folder"
                     },
                     "style": "powerline",
-                    "template": " \ue5ff {{ path .Path .Location }} ",
+                    "template": "\ue5ff {{ path .Path .Location }} ",
                     "type": "path"
                 },
                 {
@@ -105,14 +105,14 @@
                     "style": "diamond",
                     "leading_diamond": "\ue0c7",
                     "trailing_diamond": "\ue0c6",
-                    "template": " \uf0e7 ",
+                    "template": "\uf0e7 ",
                     "type": "root"
                 },
                 {
                     "background": "p:background-color",
                     "foreground": "p:git-text",
                     "style": "plain",
-                    "template": "{{ if .Root }}{{ else }}<p:timer-text> > </>{{ end }}",
+                    "template": "{{ if .Root }}{{ else }}<p:timer-text>> </>{{ end }}",
                     "type": "text"
                 }
             ],
@@ -122,6 +122,6 @@
     "transient_prompt": {
         "background": "p:background-color",
         "foreground": "p:git-text",
-        "template": "{{ if .Root }}{{ else }}<p:timer-text> > </>{{ end }}"
+        "template": "{{ if .Root }}{{ else }}<p:timer-text>> </>{{ end }}"
     }
 }

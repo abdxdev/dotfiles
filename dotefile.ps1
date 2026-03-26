@@ -64,8 +64,7 @@ scoop install paint.net
 
 # Oh My Posh
 winget install JanDeDobbeleer.OhMyPosh --source winget
-cp ".\abd_short.omp.json" "$env:POSH_THEMES_PATH\abd_short.omp.json"
-'oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/abd_short.omp.json" | Invoke-Expression' >> $PROFILE
+'oh-my-posh init pwsh --config https://raw.githubusercontent.com/abdxdev/dotfiles/main/abd_short.omp.json | Invoke-Expression' >> $PROFILE
 
 # PSReadLine
 Install-Module -Name PSReadLine -Scope CurrentUser -Force
