@@ -36,6 +36,7 @@ refreshenv
 # Visual Studio Code
 scoop bucket add extras
 scoop install vscode
+git config --global core.editor "code --wait"
 
 # QBittorrent Enhanced
 scoop bucket add extras
@@ -64,7 +65,7 @@ scoop install paint.net
 
 # Oh My Posh
 winget install JanDeDobbeleer.OhMyPosh --source winget
-'oh-my-posh init pwsh --config https://raw.githubusercontent.com/abdxdev/dotfiles/main/abd_short.omp.json | Invoke-Expression' >> $PROFILE
+"oh-my-posh init pwsh --config '$pwd/abd_short.omp.json' | Invoke-Expression" >> $PROFILE
 
 # PSReadLine
 Install-Module -Name PSReadLine -Scope CurrentUser -Force
@@ -93,3 +94,6 @@ Remove-Item "$env:TEMP\main.zip"
 Copy-Item "$env:APPDATA\markdown-latex-pdf-builder\markdown-latex-pdf-builder-main\default.json" "$env:APPDATA\markdown-latex-pdf-builder\default.json"
 pnpm install -g @mermaid-js/mermaid-cli
 python -m pip install numpy matplotlib
+
+# Registry
+.\registry\Apply-Registry.ps1

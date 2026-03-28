@@ -1,0 +1,1 @@
+.\registry\Export-Registry.ps1 -Key "HKCU\Software\Microsoft\Windows\CurrentVersion\PrecisionTouchPad" -Path ".\registry\PrecisionTouchPad.reg"
